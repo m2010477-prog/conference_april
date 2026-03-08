@@ -1,0 +1,403 @@
+/* Базовые настройки и переменные */
+:root {
+    --white: #FFFFFF;
+    --blue-primary: #0299F1;
+    --cyan-light: #19D5E5;
+    --blue-dark: #0270C1;
+    --cyan-bright: #00E5D9;
+    --blue-bg: #8DE3F0;
+    
+    --text-main: #333333;
+    --text-muted: #555555;
+    
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    --gradient-soft: linear-gradient(135deg, var(--cyan-light), var(--blue-primary));
+    --gradient-overlay: linear-gradient(135deg, rgba(25, 213, 229, 0.85), rgba(2, 112, 193, 0.85));
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html { scroll-behavior: smooth; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+body { font-family: var(--font-body); color: var(--text-main); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+a { text-decoration: none; color: inherit; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.text-center { text-align: center; }
+.bg-light { background-color: rgba(141, 227, 240, 0.1); }
+
+/* Заголовки */
+.section-title { text-align: center; font-size: 2.2rem; color: var(--blue-dark); margin-bottom: 50px; position: relative; }
+.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--gradient-soft); margin: 15px auto 0; border-radius: 2px; }
+
+/* Кнопки */
+.btn { display: inline-block; padding: 15px 35px; border-radius: 30px; font-family: var(--font-heading); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: var(--transition); border: none; text-align: center; }
+.btn-primary { background: var(--gradient-soft); color: var(--white); box-shadow: 0 4px 15px rgba(2, 153, 241, 0.3); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+.btn-glow { background: var(--white); color: var(--blue-dark); box-shadow: 0 0 20px rgba(0, 229, 217, 0.5); font-size: 1.1rem; padding: 18px 45px; }
+.btn-primary:hover, .btn-glow:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 25px rgba(0, 229, 217, 0.6); }
+.btn-outline:hover { background: var(--white); color: var(--blue-primary); transform: translateY(-5px); }
+
+/* Header */
+.header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 1000; transition: var(--transition); }
+.header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); padding: 15px 0; }
+.header.scrolled .logo { color: var(--blue-dark); }
+.header.scrolled .mobile-menu-btn { color: var(--blue-dark); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--white); position: relative; z-index: 1001; }
+.logo span { color: var(--cyan-bright); }
+.mobile-menu-btn { background: none; border: none; font-size: 1.5rem; color: var(--white); cursor: pointer; position: relative; z-index: 1001; transition: var(--transition); }
+
+/* Мобильное меню по умолчанию (стили для телефонов) */
+.nav-menu {
+    position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
+    background: var(--white);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 30px; transition: var(--transition); z-index: 1000;
+}
+.nav-menu.active { left: 0; }
+.nav-menu a { color: var(--blue-dark); font-size: 1.2rem; font-weight: 600; font-family: var(--font-heading); }
+.nav-menu .nav-btn { background: var(--gradient-soft); color: var(--white); padding: 15px 30px; border-radius: 30px; box-shadow: 0 5px 15px rgba(2, 153, 241, 0.3); }
+
+/* Hero */
+.hero { height: 100vh; min-height: 600px; background-image: var(--gradient-overlay), url('https://i.postimg.cc/JhcgZwPJ/Blue-and-Navy-Modern-Meet-Our-Expert-Team-Instagram-Post-Portrait-(Sajt)-2.png'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; text-align: center; }
+.hero-content { color: var(--white); max-width: 800px; padding: 0 20px; }
+.hero-content h1 { font-size: 2.2rem; margin-bottom: 20px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.hero-content .subtitle { font-size: 1rem; margin-bottom: 30px; opacity: 0.9; }
+.hero-buttons { display: flex; flex-direction: column; gap: 15px; }
+
+/* Scroll Down */
+.scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--white); font-size: 2rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
+
+/* Почему стоит прийти */
+.features-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+.feature-card { background: var(--white); padding: 30px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(141, 227, 240, 0.3); text-align: center; transition: var(--transition); border-bottom: 4px solid transparent; }
+.feature-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--cyan-light); }
+.icon-wrap { width: 70px; height: 70px; margin: 0 auto 20px; background: var(--gradient-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); }
+.feature-card h3 { color: var(--blue-dark); margin-bottom: 10px; }
+
+/* Программа (Таймлайн для мобильных) */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+.timeline::after { content: ''; position: absolute; width: 4px; background: var(--blue-bg); top: 0; bottom: 0; left: 15px; border-radius: 2px; }
+.timeline-item { padding: 20px 0 20px 50px; position: relative; }
+.timeline-item::after { content: ''; position: absolute; width: 16px; height: 16px; left: 9px; background: var(--white); border: 4px solid var(--cyan-light); top: 25px; border-radius: 50%; z-index: 1; }
+.timeline-item .time { font-weight: 700; color: var(--blue-primary); font-size: 1.1rem; margin-bottom: 5px; }
+.timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
+
+/* --- Спикеры (Новое элегантное оформление списка) --- */
+.speakers-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    max-width: 900px; /* Сделали чуть уже, чтобы текст было удобнее читать */
+    margin: 0 auto;
+}
+
+.speaker-row { 
+    display: flex; 
+    flex-direction: column; /* На мобильных друг под другом */
+    background: var(--white); 
+    padding: 25px; 
+    border-radius: 20px; /* Более мягкие углы */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Объемная, но очень мягкая тень */
+    border: 1px solid rgba(2, 153, 241, 0.05); /* Едва заметная граница */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    gap: 20px; 
+}
+
+.speaker-row:hover { 
+    transform: translateY(-4px); /* При наведении карточка слегка "всплывает" */
+    box-shadow: 0 15px 50px rgba(2, 153, 241, 0.12); 
+    border-color: rgba(2, 153, 241, 0.2); 
+}
+
+.speaker-avatar { 
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    flex-shrink: 0; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 0 auto; /* Центрируем фото на мобильных */
+}
+
+.speaker-avatar img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.speaker-details { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* Центрируем текст на мобильных */
+    text-align: center;
+    flex: 1; 
+}
+
+.speaker-name { 
+    font-size: 1.4rem; 
+    font-weight: 800;
+    color: var(--blue-dark); 
+    margin-bottom: 12px; 
+}
+
+.speaker-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Тема выступления в виде аккуратного бейджа */
+.speaker-topic { 
+    background: rgba(25, 213, 229, 0.15); /* Светло-бирюзовый фон */
+    color: var(--blue-dark); 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.speaker-bio { 
+    color: var(--text-muted); 
+    font-size: 0.95rem; 
+    line-height: 1.6;
+}
+
+/* Десктопная версия: выстраиваем в элегантную строку */
+@media (min-width: 768px) {
+    .speaker-row { 
+        flex-direction: row; 
+        align-items: center; 
+        padding: 30px 40px; 
+        gap: 40px; 
+    }
+    .speaker-avatar { 
+        width: 120px; 
+        height: 120px; 
+        margin: 0; /* Убираем центрирование */
+    }
+    .speaker-details { 
+        align-items: flex-start; /* Выравниваем текст по левому краю */
+        text-align: left;
+    }
+    .speaker-text {
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* Десктопная версия: выстраиваем всё в одну идеальную линию */
+@media (min-width: 768px) {
+    .speaker-row { 
+        padding: 15px 30px; 
+        gap: 30px; 
+    }
+    .speaker-avatar { 
+        width: 80px; 
+        height: 80px; 
+    }
+    .speaker-details { 
+        flex-direction: row; /* Имя и текст встают в один ряд */
+        align-items: center; 
+    }
+    .speaker-name { 
+        width: 200px; /* Фиксированная ширина для колонки с именами */
+        margin-bottom: 0; 
+        flex-shrink: 0;
+    }
+    .speaker-text {
+        flex-direction: row; /* Тема и Био встают в ряд */
+        align-items: center;
+        flex: 1;
+        gap: 20px;
+    }
+    .speaker-topic { 
+        width: 250px; /* Фиксированная ширина для колонки с темами */
+        flex-shrink: 0;
+        border-right: 1px solid rgba(0,0,0,0.1); /* Разделитель между темой и био */
+        padding-right: 20px;
+    }
+    .speaker-bio { 
+        flex: 1; /* Описание занимает всё оставшееся место */
+    }
+}
+/* --- Секция Место проведения (Карта) --- */
+.location-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--white);
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.address-text, .date-text {
+    font-size: 1.1rem;
+    color: var(--blue-dark);
+    line-height: 1.4;
+}
+
+.address-text i, .date-text i {
+    color: var(--cyan-bright);
+    font-size: 1.5rem;
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.address-text span, .date-text span {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(2, 153, 241, 0.15);
+    border: 4px solid var(--white);
+    background: var(--white);
+}
+
+/* На компьютерах текст и карта встают рядом */
+@media (min-width: 768px) {
+    .location-wrapper {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    .location-info {
+        flex: 1;
+        justify-content: center;
+    }
+    .map-container {
+        flex: 2; /* Карта будет в два раза шире блока с текстом */
+    }
+}
+
+/* Купить билет */
+.tickets { background: var(--gradient-overlay); color: var(--white); text-align: center; }
+.tickets h2 { font-size: 2rem; margin-bottom: 15px; }
+.tickets p { margin: 0 auto 30px; font-size: 1rem; }
+
+/* Footer */
+.footer { background: var(--blue-dark); color: var(--white); padding: 40px 0 20px; text-align: center; }
+.footer-content { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.footer-brand h3 { font-size: 1.5rem; color: var(--cyan-bright); }
+.footer-contacts a { display: block; margin: 5px 0; }
+.footer-socials { display: flex; gap: 15px; justify-content: center; margin-top: 10px;}
+.footer-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+/* Кнопка наверх */
+.back-to-top { position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; background: var(--blue-primary); color: var(--white); border: none; border-radius: 50%; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(2, 153, 241, 0.4); opacity: 0; visibility: hidden; transition: var(--transition); z-index: 99; }
+.back-to-top.show { opacity: 1; visibility: visible; }
+
+/* Scroll Animations */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in.appear { opacity: 1; transform: translateY(0); }
+
+/* --- ДЕСКТОПНАЯ ВЕРСИЯ (от 768px и выше) --- */
+@media (min-width: 768px) {
+    .section { padding: 100px 0; }
+    .hero { background-attachment: fixed; } /* Параллакс только на десктопе, на мобильных он лагает */
+    .hero-content h1 { font-size: 4rem; }
+    .hero-content .subtitle { font-size: 1.2rem; }
+    .hero-buttons { flex-direction: row; justify-content: center; gap: 20px; }
+    
+    .section-title { font-size: 2.5rem; }
+    
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+    .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Перестраиваем таймлайн в шахматном порядке */
+    .timeline::after { left: 50%; transform: translateX(-50%); }
+    .timeline-item { width: 50%; padding: 0 40px 0 0; }
+    .timeline-item:nth-child(even) { left: 50%; padding: 0 0 0 40px; }
+    .timeline-item::after { left: auto; right: -10px; width: 20px; height: 20px; border-width: 5px; }
+    .timeline-item:nth-child(even)::after { left: -10px; }
+    .timeline-item .time { position: absolute; top: 22px; right: -100px; width: 80px; text-align: left; }
+    .timeline-item:nth-child(even) .time { left: -100px; text-align: right; }
+    
+    .map-wrapper { height: 450px; }
+    .tickets h2 { font-size: 2.8rem; }
+    .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
+    
+    /* Навигация десктоп */
+    .mobile-menu-btn { display: none; }
+    .nav-menu { position: static; height: auto; flex-direction: row; background: transparent; gap: 25px; transform: none; width: auto; }
+    .nav-menu a { color: var(--white); font-size: 1rem; font-weight: 400; font-family: var(--font-body); }
+    .header.scrolled .nav-menu a { color: var(--text-main); }
+    .header.scrolled .nav-menu a:hover { color: var(--blue-primary); }
+    .nav-menu .nav-btn { background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 20px; color: var(--white); font-weight: 600; font-family: var(--font-heading); box-shadow: none; }
+    .header.scrolled .nav-menu .nav-btn { background: var(--gradient-soft); color: var(--white); }
+}
+
+@media (min-width: 992px) {
+    .speakers-grid { grid-template-columns: repeat(3, 1fr); }
+}
+/* --- Стили для блока с ценой (Секция Билеты) --- */
+.ticket-info {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px 20px;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.price-block {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.current-price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--blue-dark); 
+    display: block;
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 15px rgba(255, 255, 255, 0.4); 
+}
+
+.price-note {
+    font-size: 1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.urgency-block p {
+    margin: 5px 0 0 0 !important;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .current-price { font-size: 2.8rem; }
+    .ticket-info { padding: 25px 15px; }
+}
