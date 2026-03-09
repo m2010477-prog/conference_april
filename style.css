@@ -100,9 +100,10 @@ a { text-decoration: none; color: inherit; }
 .timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
 
+
 /* ==========================================================================
-   Спикеры (Элегантный список с увеличенными на 100% фото)
-   ========================================================================= */
+   Спикеры (Жестко зафиксированные, крупные круглые фото)
+   ========================================================================== */
 .speakers-list { 
     display: flex; 
     flex-direction: column; 
@@ -113,7 +114,7 @@ a { text-decoration: none; color: inherit; }
 
 .speaker-row { 
     display: flex; 
-    flex-direction: column; /* На мобильных друг под другом */
+    flex-direction: column; 
     background: var(--white); 
     padding: 25px; 
     border-radius: 20px; 
@@ -129,20 +130,27 @@ a { text-decoration: none; color: inherit; }
     border-color: rgba(2, 153, 241, 0.2); 
 }
 
+/* Настройки фото для мобильных */
 .speaker-avatar { 
-    width: 200px; /* Увеличено до 200px (100% от оригинала 100px) */
-    height: 200px; 
+    width: 150px; 
+    height: 150px; 
+    min-width: 150px; /* Запрещаем сплющивание */
+    min-height: 150px;
     border-radius: 50%; 
     overflow: hidden; 
     flex-shrink: 0; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin: 0 auto; 
+    position: relative;
+    background: var(--white);
 }
 
 .speaker-avatar img { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; 
+    object-fit: cover; /* Заполняет круг без искажений */
+    object-position: center 20%; /* Фокус на лицах */
+    display: block;
 }
 
 .speaker-details { 
@@ -185,48 +193,9 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.6;
 }
 
-/* Десктопная версия: выстраиваем в одну идеальную линию */
-@media (min-width: 768px) {
-    .speaker-row { 
-        flex-direction: row; 
-        align-items: center; 
-        padding: 20px 30px; 
-        gap: 30px; 
-    }
-    .speaker-avatar { 
-        width: 160px; /* Увеличено до 160px (100% от оригинала 80px) */
-        height: 160px; 
-        margin: 0; 
-    }
-    .speaker-details { 
-        flex-direction: row; 
-        align-items: center; 
-        text-align: left;
-    }
-    .speaker-name { 
-        width: 200px; 
-        margin-bottom: 0; 
-        flex-shrink: 0;
-    }
-    .speaker-text {
-        flex-direction: row; 
-        align-items: center;
-        flex: 1;
-        gap: 20px;
-    }
-    .speaker-topic { 
-        width: 250px; 
-        flex-shrink: 0;
-        border-right: 1px solid rgba(0,0,0,0.1); 
-        padding-right: 20px;
-    }
-    .speaker-bio { 
-        flex: 1; 
-    }
-}
 
 /* ==========================================================================
-   Место проведения (Горизонтальный блок + Картинка)
+   Место проведения (Горизонтальная плашка + Картинка)
    ========================================================================== */
 .location-horizontal { padding: 80px 0; }
 
@@ -258,7 +227,7 @@ a { text-decoration: none; color: inherit; }
 /* ==========================================================================
    ФУТЕР (Подвал сайта)
    ========================================================================== */
-.footer { background-color: var(--blue-dark); color: var(--white); padding: 60px 0 20px; margin-top: 60px; }
+.footer { background-color: var(--blue-dark); color: var(--white); padding: 60px 0 20px; margin-top: 60px; text-align: left; }
 .footer-content { display: flex; flex-direction: column; gap: 40px; margin-bottom: 40px; }
 .footer-section { display: flex; flex-direction: column; gap: 10px; }
 .footer-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; color: var(--white); }
@@ -305,40 +274,48 @@ a { text-decoration: none; color: inherit; }
     .timeline-item .time { position: absolute; top: 22px; right: -100px; width: 80px; text-align: left; }
     .timeline-item:nth-child(even) .time { left: -100px; text-align: right; }
     
-    /* Спикеры: Десктоп (выстраиваем в одну идеальную линию) */
+    /* Спикеры: Идеальная линия для компьютеров */
     .speaker-row { 
         flex-direction: row; 
         align-items: center; 
-        padding: 20px 30px; 
-        gap: 30px; 
+        padding: 30px 40px; 
+        gap: 40px; 
     }
+    
     .speaker-avatar { 
-        width: 120px; /* Было 80px. Увеличено на 50% */
-        height: 120px; 
+        width: 180px;  /* Крупный размер для ПК */
+        height: 180px; 
+        min-width: 180px; /* Запрещаем сплющивание */
+        min-height: 180px;
         margin: 0; 
     }
+    
     .speaker-details { 
         flex-direction: row; 
         align-items: center; 
         text-align: left;
     }
+    
     .speaker-name { 
-        width: 200px; 
+        width: 220px; 
         margin-bottom: 0; 
         flex-shrink: 0;
     }
+    
     .speaker-text {
         flex-direction: row; 
         align-items: center;
         flex: 1;
-        gap: 20px;
+        gap: 25px;
     }
+    
     .speaker-topic { 
-        width: 250px; 
+        width: 280px; 
         flex-shrink: 0;
         border-right: 1px solid rgba(0,0,0,0.1); 
-        padding-right: 20px;
+        padding-right: 25px;
     }
+    
     .speaker-bio { 
         flex: 1; 
     }
@@ -366,7 +343,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ==========================================================================
-   АДАПТИВНОСТЬ: Мобильные корректировки
+   АДАПТИВНОСТЬ: Мобильные корректировки (до 767px)
    ========================================================================== */
 @media (max-width: 767px) {
     .current-price { font-size: 2.8rem; }
