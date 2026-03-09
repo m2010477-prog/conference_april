@@ -46,8 +46,24 @@ a { text-decoration: none; color: inherit; }
 .header.scrolled .logo { color: var(--blue-dark); }
 .header.scrolled .mobile-menu-btn { color: var(--blue-dark); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--white); position: relative; z-index: 1001; }
-.logo span { color: var(--cyan-bright); }
+/* --- Логотип в шапке --- */
+.logo {
+    display: flex;
+    align-items: center; /* Центрируем логотип по вертикали относительно меню */
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px; /* Высота логотипа. Можете сделать 40px (меньше) или 60px (больше) */
+    width: auto;  /* Ширина подстроится автоматически, чтобы пропорции не исказились */
+    display: block;
+    transition: transform 0.3s ease; /* Добавляем плавность для анимации */
+}
+
+/* Эффект при наведении на логотип */
+.logo:hover img {
+    transform: scale(1.05); /* Логотип будет слегка увеличиваться, если навести мышку */
+}
 .mobile-menu-btn { background: none; border: none; font-size: 1.5rem; color: var(--white); cursor: pointer; position: relative; z-index: 1001; transition: var(--transition); }
 
 /* Мобильное меню по умолчанию (стили для телефонов) */
