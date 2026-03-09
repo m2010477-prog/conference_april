@@ -414,3 +414,100 @@ a { text-decoration: none; color: inherit; }
     .current-price { font-size: 2.8rem; }
     .ticket-info { padding: 25px 15px; }
 }
+/* --- ФУТЕР (Подвал сайта) --- */
+.footer {
+    background-color: var(--blue-dark); /* Темно-синий солидный фон */
+    color: var(--white);
+    padding: 60px 0 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.footer-inn {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+}
+
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--cyan-bright); /* Яркий акцент для заголовков */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.footer-link i {
+    font-size: 1.3rem;
+    color: var(--cyan-light);
+    transition: transform 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--white);
+}
+
+.footer-link:hover i {
+    transform: scale(1.1); /* Иконка слегка увеличивается при наведении */
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+/* --- Адаптивность для компьютеров (выстраиваем в 3 колонки) --- */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .footer-section {
+        flex: 1;
+    }
+    
+    .footer-docs {
+        align-items: flex-end; /* На компьютере ссылка на оферту прижата вправо */
+        text-align: right;
+    }
+}
