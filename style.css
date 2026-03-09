@@ -100,43 +100,50 @@ a { text-decoration: none; color: inherit; }
 .timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
 
-/* Спикеры: Текст в 3 аккуратные строки (Имя, Тема, Описание) */
+/* Спикеры: Классическая карточка (Текст ровно в 3 строки без дыр) */
+    .speaker-row { 
+        flex-direction: row; 
+        align-items: center; /* Центрируем текст по вертикали относительно фото */
+        padding: 30px 40px; 
+        gap: 30px; /* Аккуратный отступ между фото и текстом */
+    }
+    
+    .speaker-avatar { 
+        width: 180px;  
+        height: 180px; 
+        min-width: 180px; 
+        min-height: 180px;
+        margin: 0; 
+    }
+    
     .speaker-details { 
-        display: flex;
-        flex-direction: column; /* Выстраиваем всё строго в столбик */
-        align-items: flex-start; 
+        display: block; /* Убираем flex, чтобы избежать дыр */
         text-align: left;
         width: 100%;
-        gap: 12px; /* Расстояние между Именем и блоком с темой/текстом */
-        padding-top: 10px;
     }
     
     .speaker-name { 
-        width: 100%; 
-        margin: 0; 
-        font-size: 1.6rem; /* Сделали имя чуть крупнее для акцента */
+        font-size: 1.6rem; 
+        margin-bottom: 10px; /* Отступ под именем */
+        display: block;
     }
     
     .speaker-text {
-        display: flex;
-        flex-direction: column; /* Тему и описание тоже строго в столбик */
-        align-items: flex-start;
-        width: 100%;
-        gap: 15px; /* Расстояние между плашкой Темы и Описанием */
+        display: block; /* Убираем flex */
     }
     
     .speaker-topic { 
-        width: auto; 
-        border-right: none; 
-        padding: 6px 14px; /* Сохраняем красивую плашку вокруг темы */
-        margin: 0;
         display: inline-block;
+        margin-bottom: 15px; /* Отступ под темой перед описанием */
+        border-right: none; 
+        padding: 6px 14px; 
     }
     
     .speaker-bio { 
-        width: 100%; 
+        display: block;
         margin: 0;
     }
+    
 /* ==========================================================================
    Место проведения (Горизонтальная плашка + Картинка)
    ========================================================================== */
