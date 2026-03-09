@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Базовые настройки и переменные
-   ========================================================================== */
+/* Базовые настройки и переменные */
 :root {
     --white: #FFFFFF;
     --blue-primary: #0299F1;
@@ -42,56 +40,62 @@ a { text-decoration: none; color: inherit; }
 .btn-primary:hover, .btn-glow:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 25px rgba(0, 229, 217, 0.6); }
 .btn-outline:hover { background: var(--white); color: var(--blue-primary); transform: translateY(-5px); }
 
-
-/* ==========================================================================
-   Header (Шапка сайта)
-   ========================================================================== */
+/* Header */
 .header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 1000; transition: var(--transition); }
 .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); padding: 15px 0; }
 .header.scrolled .logo { color: var(--blue-dark); }
 .header.scrolled .mobile-menu-btn { color: var(--blue-dark); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
+/* --- Логотип в шапке --- */
+.logo {
+    display: flex;
+    align-items: center; /* Центрируем логотип по вертикали относительно меню */
+    text-decoration: none;
+}
 
-/* Логотип в шапке */
-.logo { display: flex; align-items: center; text-decoration: none; }
-.logo img { height: 50px; width: auto; display: block; transition: transform 0.3s ease; }
-.logo:hover img { transform: scale(1.05); }
+.logo img {
+    height: 50px; /* Высота логотипа. Можете сделать 40px (меньше) или 60px (больше) */
+    width: auto;  /* Ширина подстроится автоматически, чтобы пропорции не исказились */
+    display: block;
+    transition: transform 0.3s ease; /* Добавляем плавность для анимации */
+}
+
+/* Эффект при наведении на логотип */
+.logo:hover img {
+    transform: scale(1.05); /* Логотип будет слегка увеличиваться, если навести мышку */
+}
 .mobile-menu-btn { background: none; border: none; font-size: 1.5rem; color: var(--white); cursor: pointer; position: relative; z-index: 1001; transition: var(--transition); }
 
-/* Мобильное меню по умолчанию */
-.nav-menu { position: fixed; top: 0; left: -100%; width: 100%; height: 100vh; background: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; transition: var(--transition); z-index: 1000; }
+/* Мобильное меню по умолчанию (стили для телефонов) */
+.nav-menu {
+    position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
+    background: var(--white);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 30px; transition: var(--transition); z-index: 1000;
+}
 .nav-menu.active { left: 0; }
 .nav-menu a { color: var(--blue-dark); font-size: 1.2rem; font-weight: 600; font-family: var(--font-heading); }
 .nav-menu .nav-btn { background: var(--gradient-soft); color: var(--white); padding: 15px 30px; border-radius: 30px; box-shadow: 0 5px 15px rgba(2, 153, 241, 0.3); }
 
-
-/* ==========================================================================
-   Hero (Первый экран)
-   ========================================================================== */
+/* Hero */
 .hero { height: 100vh; min-height: 600px; background-image: var(--gradient-overlay), url('https://i.postimg.cc/JhcgZwPJ/Blue-and-Navy-Modern-Meet-Our-Expert-Team-Instagram-Post-Portrait-(Sajt)-2.png'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; text-align: center; }
 .hero-content { color: var(--white); max-width: 800px; padding: 0 20px; }
 .hero-content h1 { font-size: 2.2rem; margin-bottom: 20px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .hero-content .subtitle { font-size: 1rem; margin-bottom: 30px; opacity: 0.9; }
 .hero-buttons { display: flex; flex-direction: column; gap: 15px; }
 
-/* Анимация стрелки вниз */
+/* Scroll Down */
 .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--white); font-size: 2rem; animation: bounce 2s infinite; }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
 
-
-/* ==========================================================================
-   Почему стоит прийти (О нас)
-   ========================================================================== */
+/* Почему стоит прийти */
 .features-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
 .feature-card { background: var(--white); padding: 30px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(141, 227, 240, 0.3); text-align: center; transition: var(--transition); border-bottom: 4px solid transparent; }
 .feature-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--cyan-light); }
 .icon-wrap { width: 70px; height: 70px; margin: 0 auto 20px; background: var(--gradient-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); }
 .feature-card h3 { color: var(--blue-dark); margin-bottom: 10px; }
 
-
-/* ==========================================================================
-   Программа (Таймлайн)
-   ========================================================================== */
+/* Программа (Таймлайн для мобильных) */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; }
 .timeline::after { content: ''; position: absolute; width: 4px; background: var(--blue-bg); top: 0; bottom: 0; left: 15px; border-radius: 2px; }
 .timeline-item { padding: 20px 0 20px 50px; position: relative; }
@@ -100,122 +104,265 @@ a { text-decoration: none; color: inherit; }
 .timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
 
-/* Спикеры: Классическая карточка (Текст ровно в 3 строки без дыр) */
+/* --- Спикеры (Новое элегантное оформление списка) --- */
+.speakers-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    max-width: 900px; /* Сделали чуть уже, чтобы текст было удобнее читать */
+    margin: 0 auto;
+}
+
+.speaker-row { 
+    display: flex; 
+    flex-direction: column; /* На мобильных друг под другом */
+    background: var(--white); 
+    padding: 25px; 
+    border-radius: 20px; /* Более мягкие углы */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Объемная, но очень мягкая тень */
+    border: 1px solid rgba(2, 153, 241, 0.05); /* Едва заметная граница */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    gap: 20px; 
+}
+
+.speaker-row:hover { 
+    transform: translateY(-4px); /* При наведении карточка слегка "всплывает" */
+    box-shadow: 0 15px 50px rgba(2, 153, 241, 0.12); 
+    border-color: rgba(2, 153, 241, 0.2); 
+}
+
+.speaker-avatar { 
+    width: 130px; /* Увеличено на 30% (было 100px) */
+    height: 130px; 
+    min-width: 130px; /* Защита от сплющивания */
+    min-height: 130px;
+    border-radius: 50%; 
+    overflow: hidden; 
+    flex-shrink: 0; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 0 auto; /* Центрируем фото на мобильных */
+}
+
+.speaker-avatar img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.speaker-details { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* Центрируем текст на мобильных */
+    text-align: center;
+    flex: 1; 
+}
+
+.speaker-name { 
+    font-size: 1.4rem; 
+    font-weight: 800;
+    color: var(--blue-dark); 
+    margin-bottom: 12px; 
+}
+
+.speaker-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Тема выступления в виде аккуратного бейджа */
+.speaker-topic { 
+    background: rgba(25, 213, 229, 0.15); /* Светло-бирюзовый фон */
+    color: var(--blue-dark); 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.speaker-bio { 
+    color: var(--text-muted); 
+    font-size: 0.95rem; 
+    line-height: 1.6;
+}
+
+/* Десктопная версия: выстраиваем в элегантную строку */
+@media (min-width: 768px) {
     .speaker-row { 
         flex-direction: row; 
-        align-items: center; /* Центрируем текст по вертикали относительно фото */
+        align-items: center; 
         padding: 30px 40px; 
-        gap: 30px; /* Аккуратный отступ между фото и текстом */
+        gap: 40px; 
     }
-    
     .speaker-avatar { 
-        width: 180px;  
-        height: 180px; 
-        min-width: 180px; 
-        min-height: 180px;
-        margin: 0; 
+        width: 160px; /* Увеличено примерно на 30% (было 120px) */
+        height: 160px; 
+        min-width: 160px;
+        min-height: 160px;
+        margin: 0; /* Убираем центрирование */
     }
-    
     .speaker-details { 
-        display: block; /* Убираем flex, чтобы избежать дыр */
+        align-items: flex-start; /* Выравниваем текст по левому краю */
         text-align: left;
-        width: 100%;
     }
-    
-    .speaker-name { 
-        font-size: 1.6rem; 
-        margin-bottom: 10px; /* Отступ под именем */
-        display: block;
-    }
-    
     .speaker-text {
-        display: block; /* Убираем flex */
+        align-items: flex-start;
+        gap: 10px;
     }
-    
+}
+
+/* Десктопная версия: выстраиваем всё в одну идеальную линию */
+@media (min-width: 768px) {
+    .speaker-row { 
+        padding: 15px 30px; 
+        gap: 30px; 
+    }
+    .speaker-avatar { 
+        width: 110px; /* Увеличено примерно на 30% (было 80px) */
+        height: 110px; 
+        min-width: 110px;
+        min-height: 110px;
+    }
+    .speaker-details { 
+        flex-direction: row; /* Имя и текст встают в один ряд */
+        align-items: center; 
+    }
+    .speaker-name { 
+        width: 200px; /* Фиксированная ширина для колонки с именами */
+        margin-bottom: 0; 
+        flex-shrink: 0;
+    }
+    .speaker-text {
+        flex-direction: row; /* Тема и Био встают в ряд */
+        align-items: center;
+        flex: 1;
+        gap: 20px;
+    }
     .speaker-topic { 
-        display: inline-block;
-        margin-bottom: 15px; /* Отступ под темой перед описанием */
-        border-right: none; 
-        padding: 6px 14px; 
+        width: 250px; /* Фиксированная ширина для колонки с темами */
+        flex-shrink: 0;
+        border-right: 1px solid rgba(0,0,0,0.1); /* Разделитель между темой и био */
+        padding-right: 20px;
     }
-    
     .speaker-bio { 
-        display: block;
-        margin: 0;
+        flex: 1; /* Описание занимает всё оставшееся место */
     }
-    
-/* ==========================================================================
-   Место проведения (Горизонтальная плашка + Картинка)
-   ========================================================================== */
-.location-horizontal { padding: 80px 0; }
+}
+/* --- Секция Место проведения (Горизонтальный блок + Картинка) --- */
+.location-horizontal {
+    padding: 80px 0;
+}
 
-.info-bar { display: flex; justify-content: space-around; align-items: center; background: var(--white); padding: 25px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); margin-bottom: 30px; gap: 20px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-.info-item { display: flex; align-items: center; gap: 15px; }
-.info-item i { font-size: 2.2rem; color: var(--blue-primary); }
-.info-text { display: flex; flex-direction: column; }
-.info-text strong { font-size: 1.2rem; color: var(--blue-dark); margin-bottom: 5px; }
-.info-text span { font-size: 0.95rem; color: var(--text-muted); }
+/* Горизонтальная панель над картой */
+.info-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--white);
+    padding: 25px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px; 
+    gap: 20px;
+    max-width: 1000px; /* Ограничиваем ширину плашки */
+    margin-left: auto;
+    margin-right: auto;
+}
 
-.map-container-image { width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 4px solid var(--white); background: var(--blue-bg); line-height: 0; }
-.map-container-image img { width: 100%; height: auto; display: block; }
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
+.info-item i {
+    font-size: 2.2rem;
+    color: var(--blue-primary);
+}
 
-/* ==========================================================================
-   Билеты (Секция с ценой)
-   ========================================================================== */
+.info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-text strong {
+    font-size: 1.2rem;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+}
+
+.info-text span {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Контейнер для картинки-карты */
+.map-container-image {
+    width: 100%;
+    max-width: 1000px; /* Ограничиваем ширину, чтобы качество скриншота не падало */
+    margin: 0 auto; /* Ставим по центру */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--white);
+    background: var(--blue-bg);
+    line-height: 0; /* Убирает лишний отступ под картинкой */
+}
+
+.map-container-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 768px) {
+    .info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+        gap: 25px;
+    }
+}
+/* Купить билет */
 .tickets { background: var(--gradient-overlay); color: var(--white); text-align: center; }
 .tickets h2 { font-size: 2rem; margin-bottom: 15px; }
 .tickets p { margin: 0 auto 30px; font-size: 1rem; }
 
-.ticket-info { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 30px 20px; max-width: 500px; margin: 0 auto 40px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-.price-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-.current-price { font-size: 3.5rem; font-weight: 800; font-family: var(--font-heading); color: var(--blue-dark); display: block; line-height: 1; margin-bottom: 5px; text-shadow: 0 2px 15px rgba(255, 255, 255, 0.4); }
-.price-note { font-size: 1rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-.urgency-block p { margin: 5px 0 0 0 !important; font-size: 1.05rem; line-height: 1.5; }
+/* Footer */
+.footer { background: var(--blue-dark); color: var(--white); padding: 40px 0 20px; text-align: center; }
+.footer-content { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.footer-brand h3 { font-size: 1.5rem; color: var(--cyan-bright); }
+.footer-contacts a { display: block; margin: 5px 0; }
+.footer-socials { display: flex; gap: 15px; justify-content: center; margin-top: 10px;}
+.footer-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-
-/* ==========================================================================
-   ФУТЕР (Подвал сайта)
-   ========================================================================== */
-.footer { background-color: var(--blue-dark); color: var(--white); padding: 60px 0 20px; margin-top: 60px; text-align: left; }
-.footer-content { display: flex; flex-direction: column; gap: 40px; margin-bottom: 40px; }
-.footer-section { display: flex; flex-direction: column; gap: 10px; }
-.footer-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; color: var(--white); }
-.footer-inn { color: rgba(255, 255, 255, 0.6); font-size: 0.95rem; }
-.footer-heading { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--cyan-bright); text-transform: uppercase; letter-spacing: 1px; }
-.footer-contacts { display: flex; flex-direction: column; gap: 15px; }
-
-.footer-link { color: rgba(255, 255, 255, 0.85); text-decoration: none; display: inline-flex; align-items: center; gap: 12px; font-size: 1.05rem; transition: all 0.3s ease; }
-.footer-link i { font-size: 1.3rem; color: var(--cyan-light); transition: transform 0.3s ease; }
-.footer-link:hover { color: var(--white); }
-.footer-link:hover i { transform: scale(1.1); }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; }
-
-
-/* ==========================================================================
-   Утилиты и Анимации
-   ========================================================================== */
+/* Кнопка наверх */
 .back-to-top { position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; background: var(--blue-primary); color: var(--white); border: none; border-radius: 50%; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(2, 153, 241, 0.4); opacity: 0; visibility: hidden; transition: var(--transition); z-index: 99; }
 .back-to-top.show { opacity: 1; visibility: visible; }
 
+/* Scroll Animations */
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in.appear { opacity: 1; transform: translateY(0); }
 
-
-/* ==========================================================================
-   АДАПТИВНОСТЬ: Десктопная версия (от 768px и выше)
-   ========================================================================== */
+/* --- ДЕСКТОПНАЯ ВЕРСИЯ (от 768px и выше) --- */
 @media (min-width: 768px) {
-    /* Базовые секции */
     .section { padding: 100px 0; }
-    .hero { background-attachment: fixed; } 
+    .hero { background-attachment: fixed; } /* Параллакс только на десктопе, на мобильных он лагает */
     .hero-content h1 { font-size: 4rem; }
     .hero-content .subtitle { font-size: 1.2rem; }
     .hero-buttons { flex-direction: row; justify-content: center; gap: 20px; }
-    .section-title { font-size: 2.5rem; }
-    .features-grid { grid-template-columns: repeat(3, 1fr); }
     
-    /* Таймлайн */
+    .section-title { font-size: 2.5rem; }
+    
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+    .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Перестраиваем таймлайн в шахматном порядке */
     .timeline::after { left: 50%; transform: translateX(-50%); }
     .timeline-item { width: 50%; padding: 0 40px 0 0; }
     .timeline-item:nth-child(even) { left: 50%; padding: 0 0 0 40px; }
@@ -224,54 +371,9 @@ a { text-decoration: none; color: inherit; }
     .timeline-item .time { position: absolute; top: 22px; right: -100px; width: 80px; text-align: left; }
     .timeline-item:nth-child(even) .time { left: -100px; text-align: right; }
     
-    /* Спикеры: Идеальная линия для компьютеров */
-    .speaker-row { 
-        flex-direction: row; 
-        align-items: center; 
-        padding: 30px 40px; 
-        gap: 40px; 
-    }
-    
-    .speaker-avatar { 
-        width: 180px;  /* Крупный размер для ПК */
-        height: 180px; 
-        min-width: 180px; /* Запрещаем сплющивание */
-        min-height: 180px;
-        margin: 0; 
-    }
-    
-    .speaker-details { 
-        flex-direction: row; 
-        align-items: center; 
-        text-align: left;
-    }
-    
-    .speaker-name { 
-        width: 220px; 
-        margin-bottom: 0; 
-        flex-shrink: 0;
-    }
-    
-    .speaker-text {
-        flex-direction: row; 
-        align-items: center;
-        flex: 1;
-        gap: 25px;
-    }
-    
-    .speaker-topic { 
-        width: 280px; 
-        flex-shrink: 0;
-        border-right: 1px solid rgba(0,0,0,0.1); 
-        padding-right: 25px;
-    }
-    
-    .speaker-bio { 
-        flex: 1; 
-    }
-    
-    /* Билеты */
+    .map-wrapper { height: 450px; }
     .tickets h2 { font-size: 2.8rem; }
+    .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
     
     /* Навигация десктоп */
     .mobile-menu-btn { display: none; }
@@ -281,22 +383,153 @@ a { text-decoration: none; color: inherit; }
     .header.scrolled .nav-menu a:hover { color: var(--blue-primary); }
     .nav-menu .nav-btn { background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 20px; color: var(--white); font-weight: 600; font-family: var(--font-heading); box-shadow: none; }
     .header.scrolled .nav-menu .nav-btn { background: var(--gradient-soft); color: var(--white); }
+}
 
-    /* Футер */
+@media (min-width: 992px) {
+    .speakers-grid { grid-template-columns: repeat(3, 1fr); }
+}
+/* --- Стили для блока с ценой (Секция Билеты) --- */
+.ticket-info {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px 20px;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.price-block {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.current-price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--blue-dark); 
+    display: block;
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 15px rgba(255, 255, 255, 0.4); 
+}
+
+.price-note {
+    font-size: 1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.urgency-block p {
+    margin: 5px 0 0 0 !important;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .current-price { font-size: 2.8rem; }
+    .ticket-info { padding: 25px 15px; }
+}
+/* --- ФУТЕР (Подвал сайта) --- */
+.footer {
+    background-color: var(--blue-dark); /* Темно-синий солидный фон */
+    color: var(--white);
+    padding: 60px 0 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.footer-inn {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+}
+
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--cyan-bright); /* Яркий акцент для заголовков */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.footer-link i {
+    font-size: 1.3rem;
+    color: var(--cyan-light);
+    transition: transform 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--white);
+}
+
+.footer-link:hover i {
+    transform: scale(1.1); /* Иконка слегка увеличивается при наведении */
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+/* --- Адаптивность для компьютеров (выстраиваем в 3 колонки) --- */
+@media (min-width: 768px) {
     .footer-content {
         flex-direction: row;
         justify-content: space-between;
         gap: 20px;
     }
-    .footer-section { flex: 1; }
-    .footer-docs { align-items: flex-end; text-align: right; }
-}
-
-/* ==========================================================================
-   АДАПТИВНОСТЬ: Мобильные корректировки (до 767px)
-   ========================================================================== */
-@media (max-width: 767px) {
-    .current-price { font-size: 2.8rem; }
-    .ticket-info { padding: 25px 15px; }
-    .info-bar { flex-direction: column; align-items: flex-start; padding: 25px; gap: 25px; }
+    
+    .footer-section {
+        flex: 1;
+    }
+    
+    .footer-docs {
+        align-items: flex-end; /* На компьютере ссылка на оферту прижата вправо */
+        text-align: right;
+    }
 }
