@@ -100,10 +100,9 @@ a { text-decoration: none; color: inherit; }
 .timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
 
-
 /* ==========================================================================
-   Спикеры (Элегантный список с увеличенными на 50% фото)
-   ========================================================================== */
+   Спикеры (Элегантный список с увеличенными на 100% фото)
+   ========================================================================= */
 .speakers-list { 
     display: flex; 
     flex-direction: column; 
@@ -114,7 +113,7 @@ a { text-decoration: none; color: inherit; }
 
 .speaker-row { 
     display: flex; 
-    flex-direction: column; 
+    flex-direction: column; /* На мобильных друг под другом */
     background: var(--white); 
     padding: 25px; 
     border-radius: 20px; 
@@ -131,8 +130,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 .speaker-avatar { 
-    width: 150px; /* Было 100px. Увеличено на 50% */
-    height: 150px; 
+    width: 200px; /* Увеличено до 200px (100% от оригинала 100px) */
+    height: 200px; 
     border-radius: 50%; 
     overflow: hidden; 
     flex-shrink: 0; 
@@ -186,6 +185,45 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.6;
 }
 
+/* Десктопная версия: выстраиваем в одну идеальную линию */
+@media (min-width: 768px) {
+    .speaker-row { 
+        flex-direction: row; 
+        align-items: center; 
+        padding: 20px 30px; 
+        gap: 30px; 
+    }
+    .speaker-avatar { 
+        width: 160px; /* Увеличено до 160px (100% от оригинала 80px) */
+        height: 160px; 
+        margin: 0; 
+    }
+    .speaker-details { 
+        flex-direction: row; 
+        align-items: center; 
+        text-align: left;
+    }
+    .speaker-name { 
+        width: 200px; 
+        margin-bottom: 0; 
+        flex-shrink: 0;
+    }
+    .speaker-text {
+        flex-direction: row; 
+        align-items: center;
+        flex: 1;
+        gap: 20px;
+    }
+    .speaker-topic { 
+        width: 250px; 
+        flex-shrink: 0;
+        border-right: 1px solid rgba(0,0,0,0.1); 
+        padding-right: 20px;
+    }
+    .speaker-bio { 
+        flex: 1; 
+    }
+}
 
 /* ==========================================================================
    Место проведения (Горизонтальный блок + Картинка)
