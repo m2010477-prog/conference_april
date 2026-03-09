@@ -234,11 +234,11 @@ a { text-decoration: none; color: inherit; }
 .location-premium {
     position: relative;
     width: 100%;
-    height: 600px; /* Высота блока с картой на компьютере */
+    height: 600px; /* Высота блока на компьютере */
     margin-top: 80px;
     display: flex;
     align-items: center;
-    background: var(--blue-bg); /* Цвет-заглушка, пока грузится карта */
+    background: var(--blue-bg);
 }
 
 .map-full {
@@ -253,7 +253,7 @@ a { text-decoration: none; color: inherit; }
 .map-full iframe {
     width: 100%;
     height: 100%;
-    filter: contrast(1.1) grayscale(10%); /* Делаем карту чуть более стильной */
+    filter: contrast(1.1) grayscale(10%); 
 }
 
 /* Плавающая карточка */
@@ -265,8 +265,8 @@ a { text-decoration: none; color: inherit; }
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     max-width: 420px;
-    margin-left: 10%; /* Отступ слева на широком экране */
-    border-top: 5px solid var(--cyan-light); /* Яркий акцент сверху */
+    margin-left: 10%; /* Отступ слева на компьютере */
+    border-top: 5px solid var(--cyan-light);
 }
 
 .location-card h2 {
@@ -280,7 +280,7 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.4;
     margin-bottom: 20px;
     position: relative;
-    padding-left: 35px; /* Место под иконки */
+    padding-left: 35px; /* Место под иконку */
 }
 
 .location-details i {
@@ -299,24 +299,39 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.5;
 }
 
-/* Адаптивность для мобильных телефонов и планшетов */
-@media (max-width: 767px) {
+/* --- Адаптивность для мобильных телефонов и планшетов --- */
+@media (max-width: 991px) {
     .location-premium {
-        height: auto;
-        flex-direction: column;
-        margin-top: 50px;
+        height: auto; /* Разрешаем блоку растягиваться */
+        flex-direction: column; /* Ставим элементы друг под друга */
+        margin-top: 60px;
+        background: transparent;
     }
+    
     .map-full {
-        position: relative;
-        height: 400px; /* Высота карты на телефоне */
-        order: 2; /* Карта будет под карточкой */
+        position: relative; /* Убираем абсолютное позиционирование */
+        height: 400px; /* Удобная высота карты для телефона */
+        width: 100%;
+        order: 2; /* Карта идет второй (внизу) */
     }
+
     .location-card {
-        margin: 0 20px -30px 20px; /* Карточка слегка "наезжает" на карту */
-        order: 1; /* Текст будет над картой */
-        max-width: calc(100% - 40px);
-        padding: 30px 20px;
+        margin: 0 auto; /* Центрируем карточку */
+        width: 90%; /* Ширина карточки на телефоне */
+        max-width: 500px;
+        order: 1; /* Карточка идет первой (сверху) */
+        transform: translateY(20px); /* Эффект стильного "наезда" на карту */
         z-index: 3;
+        padding: 30px 20px;
+    }
+    
+    .location-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .location-details p {
+        font-size: 1.05rem;
     }
 }
 /* Купить билет */
