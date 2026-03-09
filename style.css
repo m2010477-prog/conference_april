@@ -250,10 +250,11 @@ a { text-decoration: none; color: inherit; }
     z-index: 1;
 }
 
-.map-full iframe {
+..map-full iframe {
     width: 100%;
     height: 100%;
     filter: contrast(1.1) grayscale(10%); 
+    pointer-events: none; /* Эта магия запрещает карте реагировать на любые касания и скролл */
 }
 
 /* Плавающая карточка */
