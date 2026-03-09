@@ -100,12 +100,12 @@ a { text-decoration: none; color: inherit; }
 .timeline-item .content { background: var(--white); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .timeline-item.break .content { background: var(--blue-bg); color: var(--blue-dark); }
 
-/* Спикеры: Классическая карточка для компьютеров */
+/* Спикеры: Компактная карточка для компьютеров */
     .speaker-row { 
-        flex-direction: row; /* Фото слева, текст справа */
-        align-items: center; 
-        padding: 30px 40px; 
-        gap: 40px; 
+        flex-direction: row; 
+        align-items: flex-start; /* Выравниваем фото и текст по верхнему краю */
+        padding: 25px 30px; 
+        gap: 25px; /* Уменьшили отступ между фото и текстом (было 40px) */
     }
     
     .speaker-avatar { 
@@ -117,27 +117,28 @@ a { text-decoration: none; color: inherit; }
     }
     
     .speaker-details { 
-        flex-direction: column; /* Текст выстраиваем в столбик */
-        align-items: flex-start; /* Выравниваем по левому краю */
+        flex-direction: column; 
+        align-items: flex-start; 
         text-align: left;
         width: 100%;
+        padding-top: 10px; /* Слегка опускаем текст, чтобы он визуально был на одном уровне с лицом на фото */
     }
     
     .speaker-name { 
         width: auto; 
-        margin-bottom: 10px; 
+        margin-bottom: 8px; /* Сделали Имя ближе к Теме */
     }
     
     .speaker-text {
-        flex-direction: column; /* Тема и описание тоже в столбик */
+        flex-direction: column; 
         align-items: flex-start;
         width: 100%;
-        gap: 15px;
+        gap: 8px; /* Сильно уменьшили отступ между Темой и Описанием */
     }
     
     .speaker-topic { 
         width: auto; 
-        border-right: none; /* Убираем лишние линии */
+        border-right: none; 
         padding-right: 0;
     }
     
