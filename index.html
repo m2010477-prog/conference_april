@@ -36,7 +36,7 @@
                 <p class="subtitle">Актуальные идеи, практический опыт и новые подходы в образовании. <br> Встреча экспертов и практиков, посвященная современным тенденциям и перспективам.</p>
                 <div class="hero-buttons">
                     <a href="#program" class="btn btn-outline">Программа</a>
-                    <a href="#tickets" class="btn btn-primary">Купить билет</a>
+<a href="#" class="btn btn-primary" onclick="document.getElementById('ticketModal').style.display='flex'; return false;">Купить билет</a>
                 </div>
             </div>
             <a href="#why-attend" class="scroll-down">
@@ -139,7 +139,7 @@
             <div class="timeline-item break fade-in">
                 <div class="time">14:00 - 15:00</div>
                 <div class="content">
-                    <h3>Lunch </h3>
+                    <h3>Обед </h3>
                     <p>Большой перерыв на обед и неформальное общение</p>
                 </div>
             </div>
@@ -356,9 +356,25 @@
     </div>
 </div>
 
-                <a href="https://yoomoney.ru/" target="_blank" class="btn btn-glow">Купить билет</a>
+<a href="#" class="btn btn-primary" onclick="document.getElementById('ticketModal').style.display='flex'; return false;">Купить билет</a>
             </div>
         </section>
+        
+        <div id="ticketModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('ticketModal').style.display='none'">&times;</span>
+        
+        <p class="modal-text-main">
+            Уважаемые участники конференции! Убедительно просим заполнять информацию при покупке билета <strong>ВНИМАТЕЛЬНО</strong>. Ваши ФИО будут на бейдже и сертификате. Благодарим за понимание и с нетерпением ждём встречи!
+        </p>
+        
+        <p class="modal-text-sub">
+            Нажимая кнопку купить, вы даете согласие на обработку персональных данных в соответствии с <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" target="_blank">политикой конфиденциальности</a> и соглашаетесь с условиями <a href="https://www.pdffiller.com/s/UhegV5lw" target="_blank">оферты</a>.
+        </p>
+        
+        <a href="https://prodamus.ru/" class="btn btn-primary modal-btn" target="_blank" onclick="document.getElementById('ticketModal').style.display='none'">КУПИТЬ БИЛЕТ</a>
+    </div>
+</div>
 
     </main>
 
@@ -384,12 +400,9 @@
                 </div>
 
                 <div class="footer-section footer-docs">
-                    <h4 class="footer-heading">Документы</h4>
-                    <a href="oferta.pdf" target="_blank" class="footer-link">
-                        <i class="far fa-file-pdf"></i> Договор Оферты
-                    </a>
-                </div>
-
+    <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" class="footer-link" target="_blank">Договор оферты</a>
+    <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" class="footer-link" target="_blank">Политика обработки персональных данных</a>
+</div>
             </div>
             
             <div class="footer-bottom">

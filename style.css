@@ -553,3 +553,79 @@ a { text-decoration: none; color: inherit; }
         text-align: right;
     }
 }
+/* --- Всплывающее окно (Модалка) --- */
+.modal-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px); /* Красивое размытие фона */
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: 20px;
+    max-width: 550px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    color: var(--blue-dark);
+}
+
+.modal-text-main {
+    font-size: 1.1rem;
+    color: var(--blue-dark);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.modal-text-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.modal-text-sub a {
+    color: var(--blue-primary);
+    text-decoration: underline;
+}
+
+.modal-text-sub a:hover {
+    text-decoration: none;
+}
+
+.modal-btn {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+}
