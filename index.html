@@ -364,14 +364,32 @@
     <div class="modal-content">
         <span class="close-modal" onclick="document.getElementById('ticketModal').style.display='none'">&times;</span>
         
-        <p class="modal-text-main">
-        Уважаемые участники конференции!<br> Убедительно просим заполнять информацию при покупке билета <strong>ВНИМАТЕЛЬНО.</strong><br> Ваши ФИО будут на бейдже и сертификате.<br> Благодарим за понимание и с нетерпением ждём встречи! </p>
-                
-        <p class="modal-text-sub">
-            Нажимая кнопку купить, вы даете согласие на обработку персональных данных в соответствии с <a href="https://disk.yandex.ru/i/KwPCzkMmHv0pgw" target="_blank">политикой конфиденциальности</a> и соглашаетесь с условиями <a href="https://disk.yandex.ru/i/ixLHSlcwWyFbUw" target="_blank">оферты</a>.
+        <p class="modal-notice" style="color: var(--blue-dark); font-size: 1.15rem; font-weight: 500; line-height: 1.6; margin-bottom: 25px;">
+            Уважаемые участники конференции!<br>
+            Убедительно просим заполнять информацию при покупке билета <strong>ВНИМАТЕЛЬНО.</strong><br>
+            Ваши ФИО будут на бейдже и сертификате.<br>
+            Благодарим за понимание и с нетерпением ждём встречи!
         </p>
         
-        <a href="https://prodamus.ru/" class="btn btn-primary modal-btn" target="_blank" onclick="document.getElementById('ticketModal').style.display='none'">КУПИТЬ БИЛЕТ</a>
+        <form id="ticketForm" class="ticket-form" name="submit-to-google-sheet">
+            <div class="form-group">
+                <input type="text" name="name" required placeholder="Имя и Фамилия *" class="form-input">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" required placeholder="Электронная почта *" class="form-input">
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Телефон (по желанию)" class="form-input">
+            </div>
+            
+            <p class="modal-legal" style="color: #777; font-size: 0.85rem; line-height: 1.5; margin: 15px 0 25px;">
+                Оплачивая участие, вы даете согласие на обработку персональных данных<br>
+                в соответствии с <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" target="_blank" style="color: var(--blue-primary); text-decoration: underline;">политикой конфиденциальности</a><br>
+                и соглашаетесь с условиями <a href="https://www.pdffiller.com/s/UhegV5lw" target="_blank" style="color: var(--blue-primary); text-decoration: underline;">оферты</a>.
+            </p>
+            
+            <button type="submit" id="submitBtn" class="btn btn-primary modal-btn" style="width: 100%;">ПЕРЕЙТИ К ОПЛАТЕ</button>
+        </form>
     </div>
 </div>
 
@@ -399,8 +417,8 @@
                 </div>
 
                 <div class="footer-section footer-docs">
-    <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" class="footer-link" target="_blank">Договор оферты</a>
-    <a href="ВСТАВЬТЕ_ССЫЛКУ_СЮДА" class="footer-link" target="_blank">Политика обработки персональных данных</a>
+    <a href="https://disk.yandex.ru/i/ixLHSlcwWyFbUw" class="footer-link" target="_blank">Договор оферты</a>
+    <a href="https://disk.yandex.ru/i/KwPCzkMmHv0pgw" class="footer-link" target="_blank">Политика обработки персональных данных</a>
 </div>
             </div>
             
@@ -412,5 +430,44 @@
     <button id="backToTop" class="back-to-top" aria-label="Наверх"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
+    <script>
+    // ВАША ССЫЛКА НА ГУГЛ СКРИПТ УЖЕ ЗДЕСЬ
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxffjrYKCtY4T7GvdDc7VU9qQVDwEfVx6hsBmw0u4Fi030HpqoSX-5JYZxkaHWYK4OX0Q/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault(); // Останавливаем стандартную перезагрузку страницы
+        
+        // Меняем текст кнопки, чтобы пользователь видел процесс загрузки
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка данных...';
+
+        // Отправляем данные в Гугл Таблицу
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                console.log('Данные успешно отправлены!', response);
+                
+                // Очищаем форму
+                form.reset();
+                
+                // Возвращаем кнопку в исходное состояние
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ПЕРЕЙТИ К ОПЛАТЕ';
+                
+                // Закрываем модальное окно
+                document.getElementById('ticketModal').style.display = 'none';
+                
+                // Открываем страницу оплаты в новой вкладке
+                window.open('https://prodamus.ru/', '_blank');
+            })
+            .catch(error => {
+                console.error('Ошибка!', error.message);
+                alert('Произошла ошибка при отправке данных. Пожалуйста, проверьте интернет-соединение и попробуйте еще раз.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ПЕРЕЙТИ К ОПЛАТЕ';
+            });
+    });
+</script>
 </body>
 </html>
